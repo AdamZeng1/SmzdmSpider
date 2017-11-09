@@ -1,5 +1,3 @@
-"""Created by xetra f han"""
-
 from ..YDHP import YDHP_ScrapySystem, YDHP_ScrapyRequester
 import scrapy
 import json
