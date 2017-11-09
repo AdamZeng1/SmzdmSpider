@@ -1,17 +1,39 @@
 # -*- coding: utf-8 -*-
-
-# Define here the models for your spider middleware
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
+from scrapy.http import HtmlResponse
+from scrapy.utils.python import to_bytes
 from scrapy import signals
+from smzdmSpider.settings import BROWSER_MODE as BM
+from selenium import webdriver
+
+
+class SeleniumMiddleware(object):
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        middleware = cls()
+        crawler.signals.connect(middleware.spider_opened, signals.spider_opened)
+        crawler.signals.connect(middleware.spider_closed, signals.spider_closed)
+        return middleware
+
+    def process_request(self, request, spider):
+        request.meta['driver'] = self.driver
+        self.driver.get(request.url)
+        self.driver.implicitly_wait(2)
+
+        body = to_bytes(self.driver.page_source)
+
+        return HtmlResponse(self.driver.current_url, body=body, encoding='utf-8', request=request)
+
+    def spider_opened(self, spider):
+        if BM.lower() == 'firefox':
+            self.driver = webdriver.Firefox()
+
+
+    def spider_closed(self, spider):
+        self.driver.close()
 
 
 class SmzdmspiderSpiderMiddleware(object):
-    # Not all methods need to be defined. If a method is not defined,
-    # scrapy acts as if the spider middleware does not modify the
-    # passed objects.
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -53,4 +75,4 @@ class SmzdmspiderSpiderMiddleware(object):
             yield r
 
     def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
+        spider.logger.info('爬虫: %s 启动' % spider.name)
