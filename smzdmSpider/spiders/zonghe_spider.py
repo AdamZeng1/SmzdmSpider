@@ -46,7 +46,7 @@ class ZongHe(scrapy.Spider):
 
         if not self.reach_the_end:
             self.current_page_num += 1
-            self.requester.scrapy_requests(self.example_url + str(self.current_page_num), self.callback_parse)
+            yield self.requester.scrapy_requests(self.example_url + str(self.current_page_num), self.callback_parse)
 
         if self.reach_the_end:
             print("爬虫综合模块跑完了，总共爬了%s个页面" % (self.current_page_num))
