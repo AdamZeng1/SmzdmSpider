@@ -1,0 +1,16 @@
+"""This file will contains every element's xpath, See Design/ for more details"""
+
+# Zong_He Section
+ZH_card = """//*[contains(concat( " ", @class, " " ), concat( " ", "feed-row-wide", " " ))]"""
+ZH_tag = """//div[contains(@class, "z-feed-img")]//span/text()"""
+ZH_image = """//div[contains(@class, "z-feed-img")]//img/@src"""
+ZH_goods = """//*[contains(concat( " ", @class, " " ), concat( " ", "unvoted-wrap", " " ))]/i[contains(@class, "-zhi")]/../span"""
+ZH_bads = """//*[contains(concat( " ", @class, " " ), concat( " ", "unvoted-wrap", " " ))]/i[contains(@class, "buzhi")]/../span"""
+ZH_stars = """//*[contains(concat( " ", @class, " " ), concat( " ", "feed-btn-fav", " " ))]//span"""
+ZH_comments = """//*[contains(concat( " ", @class, " " ), concat( " ", "feed-btn-comment", " " ))]/text()"""
+ZH_title = """//*[contains(concat( " ", @class, " " ), concat( " ", "feed-nowrap", " " ))]/@title"""
+ZH_discounts = """//*[contains(concat( " ", @class, " " ), concat( " ", "z-highlight", " " ))]/text()"""
+ZH_description = """//*[contains(concat( " ", @class, " " ), concat( " ", "feed-block-descripe", " " ))]/text()"""
+ZH_time = """//*[contains(concat( " ", @class, " " ), concat( " ", "feed-block-extras", " " ))]/text()"""
+ZH_provider = """//*[contains(concat( " ", @class, " " ), concat( " ", "feed-block-extras", " " ))]/span/text()"""
+ZH_purchase_link = """//*[contains(concat( " ", @class, " " ), concat( " ", "z-btn-red", " " ))]/@href"""

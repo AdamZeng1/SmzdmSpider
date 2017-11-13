@@ -1,12 +1,22 @@
 # -*- coding: utf-8 -*-
 
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
+# 数据模型示意已经放在了Design文件夹下
 
 import scrapy
 
+class ZongHeItems(scrapy.Item):
+    tag = scrapy.Field()
+    image = scrapy.Field()
+    title = scrapy.Field()
+    discounts = scrapy.Field()
+    description = scrapy.Field()
+    goods = scrapy.Field()
+    bads = scrapy.Field()
+    stars = scrapy.Field()
+    comments = scrapy.Field()
+    time = scrapy.Field()
+    provider = scrapy.Field()
+    purchase_link = scrapy.Field()
 
 class HotSearchItem(scrapy.Item):
     name = scrapy.Field()
@@ -22,3 +32,4 @@ class SmzdmspiderItem(HotSearchItem):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
+

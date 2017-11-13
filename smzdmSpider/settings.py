@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
+# System settings for Spider
 
-# Scrapy settings for smzdmSpider project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     http://doc.scrapy.org/en/latest/topics/settings.html
-#     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
+BROWSER_MODE = 'firefox'
+MYSQL_USERNAME = 'root'
+MYSQL_PASSWORD = 'zhixingzheshabi'
+MYSQL_DB = 'SmzdmSpider'
+MYSQL_HOST = '127.0.0.1'
 
 BOT_NAME = 'spider'
 
@@ -56,9 +54,9 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'smzdmSpider.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'smzdmSpider.middlewares.SeleniumMiddleware': 200
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -69,7 +67,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'smzdmSpider.pipelines.SmzdmspiderPipeline': 300,
+   'smzdmSpider.pipelines.SmzdmspiderPipeline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
